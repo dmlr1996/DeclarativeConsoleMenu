@@ -23,15 +23,14 @@ namespace DeclarativeConsoleMenu
         public void ShowMenu(int id)
         {
             //get the menu we want to display and call its PrintToConsole method
-            var currentMenu = Menus.Where(m => m.MenuId == id).Single();
+            var currentMenu = Menus.Single(m => m.MenuId == id);
             currentMenu.PrintToConsole();
 
             //wait for user input
             string choice = Console.ReadLine();
-            int choiceIndex;
 
             // once we have the users selection make sure its an integer and in range of our menu options
-            if (!int.TryParse(  choice, out choiceIndex) || choiceIndex < 0 || choiceIndex >= currentMenu.MenuItems.Count )
+            if (!int.TryParse(  choice, out var choiceIndex) || choiceIndex < 0 || choiceIndex >= currentMenu.MenuItems.Count )
             {
                 if (ClearConsoleScreen)
                 {
