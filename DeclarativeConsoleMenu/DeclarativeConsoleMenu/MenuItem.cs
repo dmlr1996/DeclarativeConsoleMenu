@@ -34,5 +34,15 @@ namespace DeclarativeConsoleMenu
                 SubMenuId = subMenuId
             };
         }
+
+        public static MenuItem CreateWithActionAndSubMenu(string title, Action action, int subMenuId)
+        {
+            return new MenuItem()
+            {
+                Text = title,
+                Action = action,
+                SubMenuId = subMenuId
+            };
+        }
     }
 }
