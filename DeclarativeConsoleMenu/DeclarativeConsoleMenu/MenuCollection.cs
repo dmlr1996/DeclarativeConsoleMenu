@@ -4,21 +4,21 @@ using System.Linq;
 
 namespace DeclarativeConsoleMenu
 {
-    public class MenuCollection
+    public sealed class MenuCollection
     {
         public MenuCollection()
         {
             Menus = new List<Menu>();
         }
 
-        public virtual List<Menu> Menus { get; set; }
+        public List<Menu> Menus { get; set; }
 
-        public virtual void AddMenu(Menu menu)
+        public void AddMenu(Menu menu)
         {
             Menus.Add(menu);
         }
 
-        public virtual void ShowMenu(int id)
+        public void ShowMenu(int id)
         {
             //get the menu we want to display and call its PrintToConsole method
             var currentMenu = Menus.Where(m => m.MenuId == id).Single();
