@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace DeclarativeConsoleMenu
 {
-    public class Menu
+    public sealed class Menu
     {
         public Menu()
         {
             MenuItems = new List<MenuItem>();
         }
 
-        public virtual int MenuId { get; set; }
+        public int MenuId { get; set; }
 
-        public virtual List<MenuItem> MenuItems { get; set; }
+        public List<MenuItem> MenuItems { get; set; }
 
-        public virtual string Title { get; set; }
+        public string Title { get; set; }
 
-        public virtual void PrintToConsole()
+        public void PrintToConsole()
         {
             foreach (MenuItem item in MenuItems)
             {
