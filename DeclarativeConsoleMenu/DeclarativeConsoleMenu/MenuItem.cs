@@ -15,14 +15,25 @@ namespace DeclarativeConsoleMenu
         public virtual int? SubMenuId { get; set; }
 
         //if there isn't a sub menu, what should we do
-        public virtual Action Action { get; set; }
+        public virtual Action FirstAction { get; set; }
+        public virtual Action SecondAction { get; set; }
 
-        public static MenuItem CreateWithAction(string title, Action action)
+        public static MenuItem CreateWithAction(string title, Action firstAction)
         {
             return new MenuItem()
             {
                 Text = title,
-                Action = action
+                FirstAction = firstAction
+            };
+        }
+
+        public static MenuItem CreateWithSecondAction(string title, Action firstAction, Action secondAction)
+        {
+            return new MenuItem()
+            {
+                Text = title,
+                FirstAction = firstAction,
+                SecondAction = secondAction
             };
         }
 
@@ -35,12 +46,12 @@ namespace DeclarativeConsoleMenu
             };
         }
 
-        public static MenuItem CreateWithActionAndSubMenu(string title, Action action, int subMenuId)
+        public static MenuItem CreateWithActionAndSubMenu(string title, Action firstAction, int subMenuId)
         {
             return new MenuItem()
             {
                 Text = title,
-                Action = action,
+                FirstAction = firstAction,
                 SubMenuId = subMenuId
             };
         }

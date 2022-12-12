@@ -53,13 +53,15 @@ namespace DeclarativeConsoleMenu
                     {
                         Console.Clear();
                     }
-                    menuItemSelected.Action?.Invoke();
+                    menuItemSelected.FirstAction?.Invoke();
+                    menuItemSelected.SecondAction?.Invoke();
                     ShowMenu(menuItemSelected.SubMenuId.Value);
                 }
                 // otherwise perform whatever action we need
                 else
                 {
-                    menuItemSelected.Action();
+                    menuItemSelected.FirstAction?.Invoke();
+                    menuItemSelected.SecondAction?.Invoke();
                 }
             }
         }
