@@ -6,6 +6,8 @@ namespace DeclarativeConsoleMenu
 {
     public sealed class MenuCollection
     {
+        public bool ClearConsoleScreen = true;
+
         public MenuCollection()
         {
             Menus = new List<Menu>();
@@ -31,7 +33,10 @@ namespace DeclarativeConsoleMenu
             // once we have the users selection make sure its an integer and in range of our menu options
             if (!int.TryParse(  choice, out choiceIndex) || choiceIndex < 0 || choiceIndex >= currentMenu.MenuItems.Count )
             {
-                Console.Clear();
+                if (ClearConsoleScreen)
+                {
+                    Console.Clear();
+                }
 
                 // Redisplay menu with error message.
                 Console.WriteLine("Invalid selection - try again");
@@ -45,7 +50,11 @@ namespace DeclarativeConsoleMenu
                 // if there's a sub menu then display it
                 if (menuItemSelected.SubMenuId.HasValue)
                 {
-                    Console.Clear();
+                    if (ClearConsoleScreen)
+                    {
+                        Console.Clear();
+                    }
+                    menuItemSelected.Action?.Invoke();
                     ShowMenu(menuItemSelected.SubMenuId.Value);
                 }
                 // otherwise perform whatever action we need
