@@ -28,7 +28,8 @@ namespace DeclarativeConsoleMenu.SampleApp
                             {
                                 Text = "Print hello world!",
                                 //or if you want to perform an action, set the Action property
-                                Action = () => Console.WriteLine("Hello World!")
+                                Action = () => Console.WriteLine("Hello World!"),
+                                SubMenuId = 1
                             }
                         }
                     },
@@ -40,12 +41,14 @@ namespace DeclarativeConsoleMenu.SampleApp
                             new MenuItem()
                             {
                                 Text = "Print Hello",
-                                Action = () => Console.WriteLine("Hello")
+                                Action = () => Console.WriteLine("Hello"),
+                                SubMenuId = 2
                             },
                             new MenuItem()
                             {
                                 Text = "Print Goodbye",
-                                Action = () => Console.WriteLine("Goodbye")
+                                Action = () => Console.WriteLine("Goodbye"),
+                                SubMenuId = 2
                             },
                             new MenuItem()
                             {

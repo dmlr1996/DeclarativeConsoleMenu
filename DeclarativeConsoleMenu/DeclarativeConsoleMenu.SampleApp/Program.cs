@@ -11,6 +11,7 @@ namespace DeclarativeConsoleMenu.SampleApp
         static void Main(string[] args)
         {
             MenuCollection menus = MenuGenerator.CreateMenuCollection();
+            menus.ClearConsoleScreen = false;
             menus.ShowMenu(1);
             Console.ReadKey();
         }
